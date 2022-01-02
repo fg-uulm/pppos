@@ -598,6 +598,7 @@ static void mgos_pppos_dispatch_once(struct mgos_pppos_data *pd) {
       pd->deadline = now + (pd->cfg->rst_hold_ms / 1000.0);
       LOG(LL_INFO, ("Resetting modem..."));
       mgos_pppos_set_state(pd, PPPOS_RESET_HOLD);
+      mgos_pppos_at_cmd(uart_no, "+++");
       pd->baud_ok = false;
       pd->try_baud_idx = 0;
       pd->try_baud_fc = 0;
